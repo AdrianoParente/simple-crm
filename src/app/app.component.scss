@@ -17,6 +17,10 @@ mat-drawer-container {
     min-height: 56px;
     padding-left: 16px;
     padding-right: 16px;
+    img{
+        width: 50px;
+        object-fit: cover;
+    }
 }
 
 mat-toolbar,

@@ -17,7 +17,10 @@ export class UserDetailComponent implements OnInit {
   user: User = new User();
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
 
-
+  /**
+   * 
+   * check the parameter in the URL
+   */
   ngOnInit(): void {
     this.route
       .paramMap
@@ -27,22 +30,36 @@ export class UserDetailComponent implements OnInit {
       });
   }
 
-  getUser(){
+  /**
+   * 
+   * get the information of a user from the database
+   */
+  getUser() {
     this.firestore
-    .collection('users')
-    .doc(this.userId)
-    .valueChanges()
-    .subscribe((user: any) =>{
-      this.user = new User(user);
-    })
+      .collection('users')
+      .doc(this.userId)
+      .valueChanges()
+      .subscribe((user: any) => {
+        this.user = new User(user);
+      })
   }
-  editMenu(){
+
+  /**
+   * 
+   * open new dialog for editting the address of an user
+   */
+  editMenu() {
     const dialog = this.dialog.open(DialogAddedAddressComponent);
     dialog.componentInstance.user = new User(this.user.toJson());
     dialog.componentInstance.userId = this.userId;
   }
 
-  editUserMenu(){
+
+  /**
+   * 
+   * open new dialog for editting the name of an user
+   */
+  editUserMenu() {
     const dialog = this.dialog.open(DialogAddedUserComponent);
     dialog.componentInstance.user = new User(this.user.toJson());
     dialog.componentInstance.userId = this.userId;

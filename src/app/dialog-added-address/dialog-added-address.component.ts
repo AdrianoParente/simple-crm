@@ -16,7 +16,10 @@ export class DialogAddedAddressComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  /**
+   * 
+   * update the user information
+   */
   saveUser() {
     this.loading = true;
     this.firestore

@@ -13,20 +13,24 @@ export class DialogAddedUserComponent implements OnInit {
   loading = false;
   birthDate: any;
   userId: any;
-  constructor(public dialogRef: MatDialogRef<DialogAddedUserComponent>,private firestore: AngularFirestore) { }
+  constructor(public dialogRef: MatDialogRef<DialogAddedUserComponent>, private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
   }
 
+  /**
+   * 
+   * update the user information
+   */
   saveUser() {
     this.loading = true;
     this.firestore
-    .collection('users')
-    .doc(this.userId)
-    .update(this.user.toJson())
-    .then(()=>{
-      this.loading = false;
-      this.dialogRef.close();
-    })
+      .collection('users')
+      .doc(this.userId)
+      .update(this.user.toJson())
+      .then(() => {
+        this.loading = false;
+        this.dialogRef.close();
+      })
   }
 }

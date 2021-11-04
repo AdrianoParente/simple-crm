@@ -16,6 +16,11 @@ export class DialogAddUserComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  /**
+   * 
+   * add a new user to the firebase database
+   */
   saveUser() {
     this.loading = true;
     this.user.birthDate = this.birthDate.getTime();
